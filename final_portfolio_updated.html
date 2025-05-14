@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+      Nelly Mogere - Digital Marketing &amp; Content Creation
+    </title>
+    <style>
+      /* Global Styles */
+      :root {
+        --primary-color: #6a1385;
+        --secondary-color: #38b6ff;
+        --dark-color: #333;
+        --light-color: #fff;
+        --bg-light: #f8f9fa;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--primary-color);
+        transition: var(--transition);
+      }
+
+      a:hover {
+        color: var(--secondary-color);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+
+      section {
+        padding: 5rem 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: var(--primary-color);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        background: var(--primary-color);
+        color: var(--light-color);
+        border-radius: 5px;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+      }
+
+      .btn:hover {
+        background: var(--secondary-color);
+        color: var(--light-color);
+        transform: translateY(-3px);
+      }
+
+      .bg-light {
+        background-color: var(--bg-light);
+      }
+
+      /* Header Styles */
+      header {
+        background-color: var(--light-color);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        padding: 1rem 0;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .logo span {
+        color: var(--secondary-color);
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-item {
+        margin-left: 2rem;
+      }
+
+      .nav-link {
+        color: var(--dark-color);
+        font-weight: 500;
+        position: relative;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: var(--primary-color);
+        bottom: -5px;
+        left: 0;
+        transition: var(--transition);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+      }
+
+      .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease;
+        background-color: var(--dark-color);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding-top: 8rem;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.9),
+            rgba(255, 255, 255, 0.9)
+          ),
+          url("/api/placeholder/1200/800");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero-content {
+        max-width: 700px;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        color: var(--dark-color);
+      }
+
+      /* About Section */
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        margin-top: 2rem;
+      }
+
+      .about-image {
+        flex: 1;
+      }
+
+      .about-image img {
+        width: 250px;
+        border-radius: 90px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-text {
+        flex: 1;
+        padding: 1rem;
+      }
+
+      .about-text h2 {
+        margin-bottom: 1.5rem;
+      }
+
+      .about-text p {
+        margin-bottom: 1rem;
+      }
+
+      /* Projects Section */
+      .projects-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+      }
+
+      .project-card {
+        background: var(--light-color);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        flex: 1 1 300px;
+        transition: var(--transition);
+        height: 100%;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-image {
+        margin-bottom: 1rem;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 300;
+        object-fit: auto;
+        transition: transform 0.3s ease;
+      }
+
+      .project-image img:hover {
+        transform: scale(1.05);
+      }
+
+      .project-title {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .project-tools {
+        margin-bottom: 1rem;
+        color: var(--secondary-color);
+        font-weight: 500;
+      }
+
+      .project-objective {
+        margin-bottom: 1rem;
+      }
+
+      .project-result {
+        font-weight: 500;
+      }
+
+      /* Calendar Section */
+      .calendar-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        background: var(--light-color);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .calendar-table th,
+      .calendar-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+      }
+
+      .calendar-table th {
+        background-color: var(--primary-color);
+        color: var(--light-color);
+      }
+
+      .calendar-table tr:hover {
+        background-color: #f5f5f5;
+      }
+
+     /* Gallery Section */
+      .gallery-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 2rem 0;
+      }
+
+      .gallery-item {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+      }
+
+
+      /* Links Section */
+      .links-container {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .link-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .link-icon {
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--light-color);
+        font-size: 1.5rem;
+        transition: var(--transition);
+      }
+
+      .link-icon:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-5px);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark-color);
+        color: var(--light-color);
+        text-align: center;
+        padding: 2rem 0;
+      }
+
+      .footer-content {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 991px) {
+        .about-content {
+          flex-direction: column;
+        }
+
+        .about-image {
+          margin-bottom: 2rem;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 0 1rem;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(1) {
+          transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .nav-menu {
+          position: fixed;
+          left: -100%;
+          top: 70px;
+          gap: 0;
+          flex-direction: column;
+          background-color: var(--light-color);
+          width: 100%;
+          text-align: center;
+          transition: 0.3s;
+          box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+          padding: 2rem 0;
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+
+        .nav-item {
+          margin: 1.2rem 0;
+        }
+
+        .hero {
+          padding-top: 6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header with Navigation -->
+    <header>
+      <nav class="navbar container">
+        <a class="logo" href="#">Nelly<span>Mogere</span></a>
+        <ul class="nav-menu">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#calendar">Content Calendar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#gallery">Gallery</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#links">Links</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+    <!-- Hero Section with About Me -->
+    <section class="hero" id="about">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">Hi, I'm Nelly Mogere</h1>
+          <h3 class="hero-subtitle">
+            Digital Marketing &amp; Content Creation Specialist
+          </h3>
+          <div class="about-content">
+            <div class="about-image">
+              <img alt="Nelly Mogere" src="cutie.jpg" />
+            </div>
+            <div class="about-text">
+              <h2>About Me</h2>
+              <p>
+                Hi! I'm Nelly, a passionate digital marketer and content creator
+                who blends creativity with strategy to tell impactful stories
+                online.
+              </p>
+              <p>
+                I’ve worked with various tech and education-focused
+                organizations to build brand awareness, foster engagement, and
+                create campaigns that truly connect with people.
+              </p>
+              <p>
+                Outside work, I enjoy exploring new design tools and
+                volunteering in digital literacy projects that uplift women and
+                youth.
+              </p>
+              <a class="btn" href="#projects">Explore My Projects</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Featured Projects Section -->
+    <section class="bg-light" id="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-container">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="project-image">
+              <img alt="Girls in STEM Campaign" src="sca.jpg" />
+            </div>
+            <h3 class="project-title">
+              International Women’s Day Celebration – She Code Africa Chuka
+            </h3>
+            <p class="project-tools">
+              Tools: Event Planning, Poster Design, Community Engagement
+            </p>
+            <p class="project-objective">
+              <strong>Objective:</strong> Celebrate the achievements of women in tech, education, and leadership through an in-person event at Chuka University.
+            </p>
+            <p class="project-result">
+              <strong>Results:</strong> A well-attended, empowering session featuring inspiring talks, networking, and active discussions on gender equality and career growth.
+            </p>
+          </div>
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                alt="AWS Kenya/Uganda Event Branding"
+                src="terraform.jpg"
+              />
+            </div>
+            <h3 class="project-title">AWS Kenya/Uganda Event Branding</h3>
+            <p class="project-tools">
+              Tools: Graphic Design, Event Marketing, Digital Promotion
+            </p>
+            <p class="project-objective">
+              <strong>Objective:</strong> Create comprehensive branding and
+              marketing materials for AWS regional events across Kenya and
+              Uganda to increase attendance and engagement.
+            </p>
+            <p class="project-result">
+              <strong>Results:</strong> Designed cohesive visual identity that
+              increased event registration by 35% compared to previous years,
+              with 92% positive feedback on event materials.
+            </p>
+          </div>
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                alt="Elimu Pi Mental Wellness Bikeathon"
+                src="bikeathon1.jpg"
+              />
+            </div>
+            <h3 class="project-title">Elimu Pi Mental Wellness Bikeathon</h3>
+            <p class="project-tools">
+              Tools: Social Media Engagement, Community Outreach, Event Participation
+            </p>
+            <p class="project-objective">
+              <strong>Objective:</strong> Support a national bikeathon event in Mombasa aimed at promoting mental wellness and fundraising for the production of over 1500 robotics kits to benefit 300+ schools across Kenya.
+            </p>
+            <p class="project-result">
+              <strong>Results:</strong> I represented Tech Kidz Africa as one of the participating cyclists. The event brought together partners like Swahilipot Hub, CA Kenya, and Close the Gap. I was also featured on the official event poster.
+            </p>
+            <!-- <p>
+              <a
+                href="https://www.instagram.com/p/C-Al-1uMFB-/?igsh=MzdoazBuNWdrY3Fp"
+                target="_blank"
+                class="btn"
+                >View Instagram Post</a
+              >
+            </p> -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Content Calendar Sample Section -->
+    <section id="calendar">
+      <div class="container">
+        <h2 class="section-title">Content Calendar Sample</h2>
+        <p>
+          Below is a sample weekly content calendar showcasing my strategic
+          approach to multi-platform content planning:
+        </p>
+        <div class="table-responsive">
+          <table class="calendar-table">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Platform</th>
+                <th>Content Type</th>
+                <th>Caption Theme</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Monday</td>
+                <td>Instagram</td>
+                <td>Motivational Quote + Industry Statistic</td>
+                <td>
+                  "Start your week with these inspiring tech industry growth
+                  numbers #MondayMotivation"
+                </td>
+              </tr>
+              <tr>
+                <td>Tuesday</td>
+                <td>LinkedIn</td>
+                <td>Industry Thought Leadership Article</td>
+                <td>
+                  "5 Ways Digital Transformation is Reshaping Marketing in East
+                  Africa"
+                </td>
+              </tr>
+              <tr>
+                <td>Wednesday</td>
+                <td>Twitter</td>
+                <td>Poll + Engagement Question</td>
+                <td>
+                  "Which digital marketing skill is most valuable in 2025? Vote
+                  and share your thoughts! #MarketingWednesday"
+                </td>
+              </tr>
+              <tr>
+                <td>Thursday</td>
+                <td>Facebook</td>
+                <td>Behind-the-Scenes Video</td>
+                <td>
+                  "Watch how our team prepared for last week's successful
+                  virtual conference with over 500 participants"
+                </td>
+              </tr>
+              <tr>
+                <td>Friday</td>
+                <td>Instagram Stories</td>
+                <td>Weekly Wrap-up + Weekend Tips</td>
+                <td>
+                  "This week in digital: Our top 3 learnings + weekend reading
+                  recommendations #FridayInsights"
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <!-- Design Gallery Section -->
+    <section class="bg-light" id="gallery">
+      <div class="container">
+        <h2 class="section-title">Design Gallery</h2>
+        <!-- <p>
+          A selection of my design work for various marketing campaigns and
+          events:
+        </p> -->
+        <div class="gallery-container">
+          <div class="gallery-item">
+            <img alt="Event Poster Design" src="SPARK AND BUILD.png" />
+          </div>
+          <div class="gallery-item">
+            <img
+              alt="Social Media Campaign Visual"
+              src="SLEY'S COLLECTION.png"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              alt="Email Newsletter Template"
+              src="aws1.jpg"
+            />
+          </div>
+          <div class="gallery-item">
+            <img alt="Digital Advertisement" src="image.png" />
+          </div>
+          <!-- <div class="gallery-item">
+            <img alt="Infographic Design" src="/api/placeholder/300/200" />
+          </div>
+          <div class="gallery-item">
+            <img alt="Brand Identity Project" src="/api/placeholder/300/200" />
+          </div> -->
+        </div>
+      </div>
+    </section>
+    <!-- Web Project Snapshot Section -->
+    
+    <!-- Links Section -->
+    <section class="bg-light" id="links">
+      <div class="container">
+        <h2 class="section-title">Connect With Me</h2>
+        <!-- <p class="text-center">
+          Find more of my work and connect with me on these platforms:
+        </p> -->
+        <div class="links-container">
+          <a class="link-item" href="https://linkedin.com/in/nelly-mogere" target="_blank">
+            <div class="link-icon">
+              <svg
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewbox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect height="12" width="4" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </div>
+            <span>LinkedIn</span>
+          </a>
+          <a class="link-item" href="tel:+254799854104">
+            <div class="link-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                viewBox="0 0 24 24"
+              >
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+                         19.86 19.86 0 0 1-8.63-3.07
+                         19.5 19.5 0 0 1-6-6
+                         19.86 19.86 0 0 1-3.07-8.63
+                         A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72
+                         c.2 1.38.75 2.7 1.62 3.88
+                         a2 2 0 0 1-.45 2.54l-1.27 1.27
+                         a16 16 0 0 0 6 6l1.27-1.27
+                         a2 2 0 0 1 2.54-.45
+                         c1.18.87 2.5 1.42 3.88 1.62
+                         a2 2 0 0 1 1.72 2z"/>
+              </svg>
+            </div>
+            <span>+254 799 854 104</span>
+          </a>
+          
+          <a class="link-item" href="mailto:nellymogere2002@gmail.com">
+            <div class="link-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                viewBox="0 0 24 24"
+              >
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4
+                         c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <span>nellymogere2002@gmail.com</span>
+          </a>
+          
+    </section>
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <h3>Thank You for Visiting</h3>
+          <p>
+            I appreciate you taking the time to explore my portfolio. I'm
+            passionate about creating impactful digital marketing strategies and
+            content that resonates with audiences.
+          </p>
+          <p>
+            If you'd like to discuss potential collaborations or have any
+            questions, please feel free to connect with me through any of the
+            links above.
+          </p>
+          <p>
+            © 2025 Nelly Mogere | Digital Marketing &amp; Content
+            Creation
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Mobile Navigation
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".nav-menu");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      hamburger.addEventListener("click", mobileMenu);
+
+      function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+      }
+
+      // Close mobile menu when clicking on a nav link
+      navLinks.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+      }
+
+      // Smooth scroll for all anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            const headerOffset = 80;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition =
+              elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Add scroll class to header for shadow
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        header.classList.toggle("scrolled", window.scrollY > 0);
+      });
+
+      // Simple animations for elements entering viewport
+      const fadeInElements = document.querySelectorAll(
+        ".project-card, .gallery-item, .about-content, .web-project"
+      );
+
+      const fadeInOptions = {
+        threshold: 0.3,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const fadeInObserver = new IntersectionObserver(function (
+        entries,
+        fadeInObserver
+      ) {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          } else {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+            fadeInObserver.unobserve(entry.target);
+          }
+        });
+      },
+      fadeInOptions);
+
+      fadeInElements.forEach((element) => {
+        element.style.opacity = 0;
+        element.style.transform = "translateY(20px)";
+        element.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        fadeInObserver.observe(element);
+      });
+    </script>
+  </body>
+</html>
