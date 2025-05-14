@@ -54,7 +54,14 @@
         width: 90%;
         max-width: 1200px;
         margin: 0 auto;
-        overflow: hidden;
+        overflow-x: hidden;
+      }
+
+      .container-table {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        overflow-x: scroll;
       }
 
       section {
@@ -355,7 +362,11 @@
         gap: 2rem;
         margin-top: 2rem;
       }
-
+      @media only screen and (max-width: 600px) {
+        .links-container {
+          flex-direction: column;
+        }
+      }
       .link-item {
         display: flex;
         flex-direction: column;
@@ -596,7 +607,7 @@
     </section>
     <!-- Content Calendar Sample Section -->
     <section id="calendar">
-      <div class="container">
+      <div class="container-table">
         <h2 class="section-title">Content Calendar Sample</h2>
         <p>
           Below is a sample weekly content calendar showcasing my strategic
@@ -780,6 +791,7 @@
             </div>
             <span>nellymogere2002@gmail.com</span>
           </a>
+        </div>
           
     </section>
     <!-- Footer -->
